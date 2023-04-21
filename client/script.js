@@ -79,7 +79,7 @@ const handleSubmit = async (e) => {
 
   //fetch data from the server -> bot's response
   
-  const response = await fetch("adminjas.azurewebsites.net", {
+  const response = await fetch("https://codex-7bq6.onrender.com", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
