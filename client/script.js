@@ -82,12 +82,12 @@ const handleSubmit = async (e) => {
   const response = await fetch('https://server.coderealm.cloud', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       prompt: data.get('prompt')
-    }),
-  });
+    })
+  })
 
   clearInterval(loadInterval);
   messageDiv.innerHTML = " ";
@@ -96,13 +96,13 @@ const handleSubmit = async (e) => {
     const data = await response.json();
     const parsedData = data.bot.trim();
 
-    typeText(messageDiv, parsedData);
+    typeText(messageDiv, parsedData)
   } else {
-    const err = await response.json();
+    const err = await response.text();
 
     messageDiv.innerHTML = "Something went wrong";
 
-    alert(err);
+    alert(err)
   }
 }
 
