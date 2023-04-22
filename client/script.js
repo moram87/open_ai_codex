@@ -62,7 +62,7 @@ const handleSubmit = async (e) => {
 
   const data = new FormData(form);
 
-   //user's chatstripe
+  //user's chatstripe
   chatContainer.innerHTML += chatStripe(false, data.get('prompt'));
 
   form.reset();
@@ -71,14 +71,11 @@ const handleSubmit = async (e) => {
   const uniqueId = generateUniqueId();
   chatContainer.innerHTML += chatStripe(true, ' ', uniqueId);
 
-  chatContainer.scrollTop = chatContainer.scrollHeight;
-
   const messageDiv = document.getElementById(uniqueId);
 
   loader(messageDiv);
 
   //fetch data from the server -> bot's response
-  
   const response = await fetch('https://server.coderealm.cloud', {
     method: 'POST',
     headers: {
@@ -104,7 +101,10 @@ const handleSubmit = async (e) => {
 
     alert(err)
   }
+
+  chatContainer.scrollTop = chatContainer.scrollHeight;
 }
+
 
 form.addEventListener('submit', handleSubmit);
 form.addEventListener('keyup', (e) => {
